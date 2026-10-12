@@ -7,5 +7,11 @@
 Результат: 100 строк → 93 после очистки.
 
 ![до и после](docs/screenshot_before_after.png)
+
+##Автор
+
+tg:@LiaAsami 
+
 ```bash
 python -m src.pipeline -i examples/people.xlsx
+
