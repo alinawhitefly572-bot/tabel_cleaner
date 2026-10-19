@@ -17,6 +17,7 @@ from pathlib import Path
 import pandas as pd
 
 from .tools.normalizer import normalize_dataframe
+from .tools.cleaner import clean_dataframe  
 from .tools.deduplicator import find_duplicates  # см. ниже — нужна новая функция
 
 
@@ -37,6 +38,13 @@ def run_pipeline(input_file: Path, output_dir: Path) -> dict:
     print('\n🔧 Нормализация данных...')
     df = normalize_dataframe(df)
     print('   Телефоны, email, ФИО, города приведены к единому виду')
+
+    # ---------- 2.5 Очистка от мусора ----------
+    print('\n🧼 Очистка от пустых строк и пробелов...')
+    clean_result = clean_dataframe(df)
+    df = clean_result['data']
+    print(f"   Удалено пустых строк:     {clean_result['removed_empty']}")
+    print(f"   Удалено бесполезных:      {clean_result['removed_useless']}")
 
     # ---------- 3. Дедупликация ----------
     print('\n🧹 Поиск дубликатов...')
