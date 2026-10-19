@@ -21,3 +21,4 @@ tg:@LiaAsami
 ```bash
 python -m src.pipeline -i examples/people.xlsx
 
+![до и после](docs/screenshot_before_after.png)
